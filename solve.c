@@ -23,54 +23,101 @@ int is_valid(int grid[4][4], int arr[4][4], int *attr)
     int highest;
     int count;
     int check;
+	// debug
+	int r = attr[0];
+	int c = attr[1];
 
     i = -1;
     highest = 0;
     count = 0;
     check = 0;
+
+	printf("\n----------------\n");
+	print_criteria(grid);
+	printf("------------------\n");
+	grid[r][c] = attr[2];
     while (++i < 4) // row
     {
-        if (attr[2] == grid[attr[0]][i])
+        if (attr[2] == grid[attr[0]][i] && i != attr[1])
+		{
+			// if (r == 1 && c == 2 && attr[2] == 3)
+			// {
+			// 	printf("BEBAN %d %d\n", attr[2], i);
+			// 	print_criteria(grid);
+			// 	printf("================================================================\n");
+			// }
             return (1);
+		}
         if (grid[attr[0]][i] > highest)
         {
             highest = grid[attr[0]][i];
             count++;
         }
-        if (grid[attr[0]][i] == -1 && i != attr[1])
+        if (grid[attr[0]][i] == -1)
         {
             check = 1;
         }
     }
-    if (attr[0] == 3 && attr[1]== 2)
-    {
-        printf("%d %d\n", count, check);
-        print_criteria(grid);
-    }
+	// print_criteria(grid);
+	// printf("================================\n");
     if (count > arr[2][attr[0]]) // left to right
+	{
+		printf("Hi\n");
         return (1);
+	}
     if (check == 0 && count != arr[2][attr[0]])
-        return (1);
+	{
+		if (r == 1 && c == 1)
+		{
+			printf("HUH");
+		}
+		return (1);
+	}
+	if (r == 1 && c == 2 && attr[2] == 3)
+	{
+		printf("Exist-1");
+	}
     count = 0;
     i = -1;
     highest = 0;
     check = 0;
     while (++i < 4) // column up to down
     {
-        if (attr[2] == grid[i][attr[1]])
+        if (attr[2] == grid[i][attr[1]] && i != attr[0])
+		{
+			if (r == 1 && c == 2 && attr[2] == 3)
+			{
+				printf("BEBAN1\n");
+				print_criteria(grid);
+			}
             return (1);
+		}
         if (grid[i][attr[1]] > highest)
         {
             highest = grid[i][attr[1]];
             count++;
         }
-        if (grid[i][attr[1]] == -1 && i != attr[0])
+        if (grid[i][attr[1]] == -1)
             check = 1;
     }
     if (count > arr[0][attr[1]]) // up to down
+	{
+		// printf("Hi1: %d %d\n", count, arr[0][attr[1]]);
+		// print_criteria(grid);
         return (1);
+	}
     if (check == 0 && count!= arr[0][attr[1]])
+	{
+		if (r == 1 && c == 1)
+		{
+			printf("HUH1");
+		}
         return (1);
+	}
+	if (r == 1 && c == 2 && attr[2] == 3)
+	{
+		printf("Exist-2");
+	}
     count = 0;
     highest = 0;
     check = 0;
@@ -82,13 +129,27 @@ int is_valid(int grid[4][4], int arr[4][4], int *attr)
             highest = grid[attr[0]][i];
             count++;
         }
-        if (grid[attr[0]][i] == -1 && i != attr[1])
+        if (grid[attr[0]][i] == -1)
             check = 1;
     }
     if (count > arr[3][attr[0]]) // right to left
+	{
+		printf("Oi");
         return (1);
+	}
     if (check == 0 && count!= arr[3][attr[0]])
+	{
+		if (r == 1 && c == 2 && attr[2] == 3)
+		{
+			printf("\nHUH2\n");
+			print_criteria(grid);
+		}
         return (1);
+	}
+	if (r == 1 && c == 2 && attr[2] == 3)
+	{
+		printf("Exist-3");
+	}
     count = 0;
     highest = 0;
     i = 4;
@@ -99,13 +160,24 @@ int is_valid(int grid[4][4], int arr[4][4], int *attr)
             highest = grid[i][attr[1]];
             count++;
         }
-        if (grid[i][attr[1]] == -1 && i != attr[0])
+        if (grid[i][attr[1]] == -1)
             check = 1;
     }
     if (count > arr[1][attr[1]]) // down to up
-        return (1);
+	{
+		printf("Oi1");
+		return (1);
+	}
     if (check == 0 && count!= arr[1][attr[1]])
+	{
+		if (r == 1 && c == 1)
+			printf("HUH3");
         return (1);
+	}
+	if (r == 1 && c == 2 && attr[2] == 3)
+	{
+		printf("Exist-4");
+	}
     return (0);
 }
 
@@ -141,13 +213,15 @@ int recursion(int grid[4][4], int arr[4][4], int r, int c)
             attr[2] = i;
             if (is_valid(grid, arr, attr) == 0)
             {
-                grid[r][c] = i;
+                // grid[r][c] = i;
                 if (recursion(grid, arr, r, c+1) == 0)
                     // print_criteria(grid);
                     // printf("--------------------------------\n");
                     return (0);
                 grid[r][c] = -1;
             }
+			else
+				grid[r][c] = -1;
         }
         return (1);
     }
@@ -174,10 +248,10 @@ void	solve(int arr[4][4])
     printf("%d\n", ans);
 }
 
-int main()
-{
-    int arr[4][4] = {{2,2,1,4},{3,2,3,1},{2,1,2,3},{2,3,2,1}};
-    int grid[4][4] = {{-1,-1,4,1}, {4, -1,-1, 2}, {-1,-1,-1,3}, {-1,-1,-1,4}};
-    recursion(grid, arr, 0, 0);
-    print_criteria(grid);
-}
+// int main()
+// {
+//     int arr[4][4] = {{2,2,1,4},{3,2,3,1},{2,1,2,3},{2,3,2,1}};
+//     int grid[4][4] = {{-1,-1,4,1}, {4, -1,-1, 2}, {-1,-1,-1,3}, {-1,-1,-1,4}};
+//     recursion(grid, arr, 0, 0);
+//     print_criteria(grid);
+// }
