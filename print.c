@@ -6,25 +6,30 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:17:10 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/01 18:02:20 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 11:47:16 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
 void	print_criteria(int arr[4][4])
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	ans;
 
 	i = -1;
 	while (++i < 4)
 	{
 		j = -1;
-		while (++j < 4)
+		while (++j < 3)
 		{
-			printf("%d ", arr[i][j]);
+			ans = arr[i][j] + 48;
+			write(1, &ans, 1);
+			write(1, " ", 1);
 		}
-        printf("\n");
+		ans = arr[i][j] + 48;
+		write(1, &ans, 1);
+		write(1, "\n", 1);
 	}
 }

@@ -6,11 +6,12 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:46:11 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/01 16:25:43 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 11:53:32 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
+
 void	solve(int arr[4][4]);
 
 void	initialize(char *str, int *attr, int arr[4][4])
@@ -23,6 +24,23 @@ void	initialize(char *str, int *attr, int arr[4][4])
 	arr[attr[2]][attr[1]] = str[attr[0]] - 48;
 	attr[1]++;
 	attr[0]++;
+}
+
+int	input_to_arr(char *str, int *attr, int arr[4][4])
+{
+	while (str[attr[0]] != '\0')
+	{
+		if (str[attr[0]] >= '1' && str[attr[0]] <= '4')
+			initialize(str, attr, arr);
+		else if (str[attr[0]] == ' ')
+			++attr[0];
+		else
+		{
+			write(1, "Error", 5);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 // i j z
@@ -38,20 +56,15 @@ int	main(int argc, char **argv)
 		while (i++ < 3)
 			attr[i] = 0;
 		arr[3][3] = -1;
-		while (argv[1][attr[0]] != '\0')
-		{
-			if (argv[1][attr[0]] >= '1' && argv[1][attr[0]] <= '4')
-            {
-				initialize(argv[1], attr, arr);
-            }
-			else if (argv[1][attr[0]] == ' ')
-				++attr[0];
-			else
-				return (0);
-		}
+		if (input_to_arr(argv[1], attr, arr) == 1)
+			return (0);
+		if (arr[3][3] == -1)
+			write(1, "Error", 5);
 		if (arr[3][3] == -1)
 			return (0);
+		solve(arr);
 	}
-	solve(arr);
+	else
+		write(1, "Error", 5);
 	return (0);
 }

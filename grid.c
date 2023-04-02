@@ -6,21 +6,21 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:17:55 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/01 18:24:24 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 12:18:16 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Pointers: 8 bytes
 // 0: row, 1: column
 
-// TODO: check if there's clash with existing grid elements. If there is, since both of them are must, return Error & line break
-// TODO: initialize all grid to -1 first
+// TODO: check if there's clash with existing grid elements. 
+// 		 If there is, since both of them are must, return Error & line break
 
 void	print_criteria(int arr[4][4]);
-void inc_asign(int grid[4][4], int constant, int roworcolumn, int inc_or_dec)
+
+void	inc_asign(int grid[4][4], int constant, int roworcolumn, int inc_or_dec)
 {
-	int z;
-	int zm;
+	int	z;
 
 	if (inc_or_dec == 0)
 	{
@@ -46,7 +46,7 @@ void inc_asign(int grid[4][4], int constant, int roworcolumn, int inc_or_dec)
 	}
 }
 
-void asign_one(int grid[4][4], int i, int j, int arr[4][4])
+void	asign_one(int grid[4][4], int i, int j)
 {
 	if (i == 0)
 		grid[0][j] = 4;
@@ -58,17 +58,14 @@ void asign_one(int grid[4][4], int i, int j, int arr[4][4])
 		grid[j][3] = 4;
 }
 
-void asign(int grid[4][4], int *i, int *j, int arr[4][4])
+void	asign(int grid[4][4], int *i, int *j, int arr[4][4])
 {
-	int z;
+	int	z;
 
 	z = -1;
 	if (arr[*i][*j] == 1)
-	{
-		asign_one(grid, *i, *j, arr);
-		return;
-	}
-	if (*i == 0)
+		asign_one(grid, *i, *j);
+	else if (*i == 0)
 		inc_asign(grid, *j, 1, 0);
 	else if (*i == 1)
 		inc_asign(grid, *j, 1, 1);
@@ -78,19 +75,10 @@ void asign(int grid[4][4], int *i, int *j, int arr[4][4])
 		inc_asign(grid, *j, 0, 1);
 }
 
-void init_grid(int arr[4][4], int grid[4][4])
+void	init_grid(int arr[4][4], int grid[4][4])
 {
-	// int** rows;
-	// int i;
-
-	// i = 0;
-	// **rows = malloc(4*8);
-	// while (++ i < 4)
-	// {
-	//     **rows[i] = malloc(4*sizeof(int));
-	// }
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < 4)
