@@ -6,11 +6,12 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 11:56:35 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/02 12:13:10 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 16:32:49 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
 int	row_leftright(int check, int *attr, int grid[4][4], int arr[4][4])
 {
@@ -33,7 +34,7 @@ int	row_leftright(int check, int *attr, int grid[4][4], int arr[4][4])
 		if (grid[attr[0]][i] == -1)
 			check = 1;
 	}
-	if (count > arr[2][attr[0]])
+	if (count > arr[2][attr[0]] && check == 0)
 		return (1);
 	if (check == 0 && count != arr[2][attr[0]])
 		return (1);
@@ -61,7 +62,7 @@ int	col_updown(int check, int *attr, int grid[4][4], int arr[4][4])
 		if (grid[i][attr[1]] == -1)
 			check = 1;
 	}
-	if (count > arr[0][attr[1]])
+	if (count > arr[0][attr[1]] && check == 0)
 		return (1);
 	if (check == 0 && count != arr[0][attr[1]])
 		return (1);
@@ -87,7 +88,7 @@ int	rightleft(int check, int *attr, int grid[4][4], int arr[4][4])
 		if (grid[attr[0]][i] == -1)
 			check = 1;
 	}
-	if (count > arr[3][attr[0]])
+	if (count > arr[3][attr[0]] && check == 0)
 		return (1);
 	if (check == 0 && count != arr[3][attr[0]])
 		return (1);
@@ -113,7 +114,7 @@ int	downup(int check, int *attr, int grid[4][4], int arr[4][4])
 		if (grid[i][attr[1]] == -1)
 			check = 1;
 	}
-	if (count > arr[1][attr[1]])
+	if (count > arr[1][attr[1]] && check == 0)
 		return (1);
 	if (check == 0 && count != arr[1][attr[1]])
 		return (1);

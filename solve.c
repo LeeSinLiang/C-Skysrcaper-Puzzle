@@ -6,11 +6,10 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:59:52 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/02 12:18:48 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 16:32:25 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 
 void	solve(int arr[4][4]);
@@ -89,9 +88,9 @@ int	recursion(int grid[4][4], int arr[4][4], int r, int c)
 	if (r == 4)
 		return (0);
 	else if (c == 4)
-		return (recursion(grid, arr, r + 1, 0)) ;
+		return (recursion(grid, arr, r + 1, 0));
 	else if (grid[r][c] != -1)
-		return (recursion(grid, arr, r, c + 1)) ;
+		return (recursion(grid, arr, r, c + 1));
 	else
 	{
 		if (condition_loop(&i, attr, arr, grid) == 0)
