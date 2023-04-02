@@ -6,7 +6,7 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 12:46:11 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/02 11:53:32 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 17:14:29 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	input_to_arr(char *str, int *attr, int arr[4][4])
 			write(1, "Error", 5);
 			return (1);
 		}
+	}
+	if (attr[0] >= 32)
+	{
+		write(1, "Error", 5);
+		return (1);
 	}
 	return (0);
 }

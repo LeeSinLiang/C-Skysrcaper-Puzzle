@@ -6,15 +6,12 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 15:17:55 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/02 12:18:16 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 17:15:27 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Pointers: 8 bytes
 // 0: row, 1: column
-
-// TODO: check if there's clash with existing grid elements. 
-// 		 If there is, since both of them are must, return Error & line break
 
 void	print_criteria(int arr[4][4]);
 
