@@ -6,12 +6,11 @@
 /*   By: sinlee <sinlee@student42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 11:56:35 by sinlee            #+#    #+#             */
-/*   Updated: 2023/04/02 16:32:49 by sinlee           ###   ########.fr       */
+/*   Updated: 2023/04/02 17:17:03 by sinlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int	row_leftright(int check, int *attr, int grid[4][4], int arr[4][4])
 {
