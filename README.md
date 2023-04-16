@@ -19,8 +19,8 @@ The rules of the puzzle are as follows:
 
 To use this solver, follow these steps:
 
-1. Run the command `gcc -Wall -Wextra -Werror main.c grid.c print.c solve.c valid.c -o skyscraper` in terminal.
-2. Run `./skyscraper 'UpFirst UpSecond UpThird UpFourth DownFirst DownSecond DownThird DownFourth LeftFirst LeftSecond LeftThird LeftFourth RightFirst RightSecond RightThird RightFourth`
+1. Run `gcc -Wall -Wextra -Werror main.c grid.c print.c solve.c valid.c -o skyscraper` in terminal.
+2. Run `./skyscraper 'UpFirst UpSecond UpThird UpFourth DownFirst DownSecond DownThird DownFourth LeftFirst LeftSecond LeftThird LeftFourth RightFirst RightSecond RightThird RightFourth'`
 3. Enjoy!
 
 ## Algorithm
