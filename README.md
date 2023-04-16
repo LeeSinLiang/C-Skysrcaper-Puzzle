@@ -3,6 +3,10 @@
 <p align="center">
 	<img src="pictures\skyscraper.PNG" width=30% height=30% />
 </p>
+<p align="center">
+	<img src="https://img.shields.io/github/license/LeeSinLiang/C-Skysrcaper-Puzzle.svg?style=flat-square" alt="license"/>
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LeeSinLiang/C-Skysrcaper-Puzzle?color=blue&style=flat-square" />
+</p>
 
 This is a solver for the Skyscraper Puzzle, which is a logic puzzle that involves a grid of buildings with varying heights. The objective of the puzzle is to determine the heights of the buildings in each row and column, based on the clues given on the edges of the grid.
 
